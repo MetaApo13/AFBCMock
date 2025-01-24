@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../SkillMatchLandingPage.css';
 
 const SkillMatchLandingPage = () => {
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
   const featuredSkills = [
-    'Web Development', 
-    'Graphic Design', 
-    'Digital Marketing', 
-    'Content Writing', 
-    'Data Analysis'
+    'Web Development',
+    'Graphic Design',
+    'Digital Marketing',
+    'Content Writing',
+    'Data Analysis',
   ];
 
   const handleEmailSubmit = (e) => {
@@ -25,25 +27,41 @@ const SkillMatchLandingPage = () => {
           <h1>SkillSync</h1>
         </div>
         <div className="nav-actions">
-          <button className="login-btn">Login</button>
-          <button className="signup-btn">Sign Up</button>
+          {/* Navigate to Login page */}
+          <button
+            className="login-btn"
+            onClick={() => navigate('/auth')}
+          >
+            Login
+          </button>
+          {/* Navigate to Sign Up page */}
+          <button
+            className="signup-btn"
+            onClick={() => navigate('/auth')}
+          >
+            Sign Up
+          </button>
         </div>
       </nav>
 
       <main className="landing-content">
         <div className="content-text">
-          <h2>Connect. Collaborate. 
+          <h2>
+            Connect. Collaborate. 
             <span className="highlight">Elevate Your Skills</span>
           </h2>
-          <p>Discover perfect job matches, showcase your talents, and unlock endless professional opportunities.</p>
+          <p>
+            Discover perfect job matches, showcase your talents, and unlock endless professional opportunities.
+          </p>
 
           <form onSubmit={handleEmailSubmit} className="email-signup">
-            <input 
-              type="email" 
-              placeholder="Enter your email" 
+            <input
+              type="email"
+              placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
+            {/* Keep the "Get Started" button unchanged */}
             <button type="submit">Get Started →</button>
           </form>
 
